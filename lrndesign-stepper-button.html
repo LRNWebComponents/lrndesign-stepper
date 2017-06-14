@@ -23,7 +23,9 @@ visualization of steps
         --lrndesign-icon-button-color: #abacae;
         --lrndesign-stepper-btn-title-color: #000;
         --lrndesign-stepper-btn-active: #F6F7F7;
+        --lrndesign-border-color: #abacae;
       }
+
       .top-line, 
       .bottom-line {
         background-color: transparent;
@@ -33,24 +35,24 @@ visualization of steps
         background-color: var(--lrndesign-icon-button-color);
       }
 
-      :host[location="end"] .top-line {
-        background-color: var(--lrndesign-icon-button-color);
-      }
-
       :host[location="middle"] .top-line, 
       :host[location="middle"] .bottom-line {
         background-color: var(--lrndesign-icon-button-color);
       }
 
+      :host[location="end"] .top-line {
+        background-color: var(--lrndesign-icon-button-color);
+      }
+
       .top-line {
         width: 2px;
-        height: 25px;
+        height: 1.5em;
         margin: auto;
       }
 
       .bottom-line {
         width: 2px;
-        height: 25px;
+        height: 1.5em;
         margin: auto;
       }
 
@@ -64,9 +66,9 @@ visualization of steps
       .node-title {
         color: var(--lrndesign-stepper-btn-title-color);
         text-transform: none;
-        line-height: 18px;
+        line-height: 2em;
         font-weight: bold;
-        font-size: 15px;
+        font-size: 1em;
       }
 
       .btn-icon {
@@ -85,7 +87,7 @@ visualization of steps
         padding: 10px;
         width: 70%;
         position: relative;
-        right: 20px;
+        right: 1.2em;
       }
 
       .title-container:hover {
@@ -125,9 +127,7 @@ visualization of steps
 
       paper-button:active:after,
       paper-button:focus:after {
-        border-color: #abacae;
-        /*border-top-color: #abacae;
-        border-bottom-color: #abacae;*/
+        border-color: var(--lrndesign-border-color);
       }
 
       paper-button {
@@ -151,8 +151,7 @@ visualization of steps
         <div class="node-title">[[title]]</div>
       </div>
     </paper-button>
-
-
+  
   </template>
 
   <script>
@@ -188,20 +187,14 @@ visualization of steps
           notify: true,
         },
         /**
-        * The tab location position (start / end).
+        * The tab location position (start / middle / end).
         */
         location: {
           type: String,
           reflectToAttribute: true,
           notify: true,
         }
-
-
-
-
-
       },
-
     });
   </script>
 </dom-module>
