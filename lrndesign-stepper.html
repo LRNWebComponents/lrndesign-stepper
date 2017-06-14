@@ -1,8 +1,10 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="lrndesign-stepper-button.html">
+
 
 <!--
 `lrndesign-stepper`
-A LRN element
+visualization of steps
 
 @demo demo/index.html
 -->
@@ -10,24 +12,43 @@ A LRN element
 <dom-module id="lrndesign-stepper">
   <template>
     <style>
-      :host {
+       :host {
         display: block;
       }
     </style>
-    <h2>[[title]]</h2>
-  </template>
 
+    <div class="buttons">
+      <content id="stepper-children">
+      </content>
+    </div>
+  </template>
   <script>
     Polymer({
 
       is: 'lrndesign-stepper',
 
       properties: {
-        title: {
-          type: String,
-          value: 'lrndesign-stepper',
-        },
       },
+      ready: function() {
+        var root = this;
+        // var buttons = this.$$('.buttons');
+        // var tags = buttons.getElementsByTagName('lrndesign-stepper-button');
+        var children = root.getContentChildren('#stepper-children');
+        if (children.length > 1) {
+          children.forEach(function(child, index) {
+            if (index === 0) {
+              child.setAttribute('location', 'start');
+            }
+            else if (index === children.length - 1) {
+              child.setAttribute('location', 'end');
+            }
+            else {
+              child.setAttribute('location', 'middle');
+            }
+            console.log(child, index);
+          });
+        }
+      }
 
     });
   </script>

@@ -1,0 +1,207 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../iron-icons/social-icons.html">
+
+
+
+
+<!--
+`lrndesign-stepper-button`
+visualization of steps
+
+@demo demo/index.html
+-->
+
+<dom-module id="lrndesign-stepper-button">
+  <template>
+    <style>
+       :host {
+        display: block;
+        --lrndesign-icon-button-color: #abacae;
+        --lrndesign-stepper-btn-title-color: #000;
+        --lrndesign-stepper-btn-active: #F6F7F7;
+      }
+      .top-line, 
+      .bottom-line {
+        background-color: transparent;
+      }
+
+      :host[location="start"] .bottom-line {
+        background-color: var(--lrndesign-icon-button-color);
+      }
+
+      :host[location="end"] .top-line {
+        background-color: var(--lrndesign-icon-button-color);
+      }
+
+      :host[location="middle"] .top-line, 
+      :host[location="middle"] .bottom-line {
+        background-color: var(--lrndesign-icon-button-color);
+      }
+
+      .top-line {
+        width: 2px;
+        height: 25px;
+        margin: auto;
+      }
+
+      .bottom-line {
+        width: 2px;
+        height: 25px;
+        margin: auto;
+      }
+
+      .stepper-btn {
+        background-color: transparent;
+        display: flex;
+        width: 100%;
+        justify-content: center;
+      }
+
+      .node-title {
+        color: var(--lrndesign-stepper-btn-title-color);
+        text-transform: none;
+        line-height: 18px;
+        font-weight: bold;
+        font-size: 15px;
+      }
+
+      .btn-icon {
+        background-color: transparent;
+        color: var(--lrndesign-icon-button-color);
+        border-radius: 50%;
+        --iron-icon-height: 35px;
+        --iron-icon-width: 35px;
+      }
+
+      .url-style {
+        text-decoration: none;
+      }
+
+      .title-container {
+        padding: 10px;
+        width: 70%;
+        position: relative;
+        right: 20px;
+      }
+
+      .title-container:hover {
+        text-decoration: underline;
+      }
+
+      .box-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        position: relative;
+        width: 30%;
+      }
+
+      paper-button {
+        width: 100%;
+        position: relative;
+      }
+      
+      paper-button:after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        border-top: 1px solid transparent;
+        border-bottom: 1px solid transparent;
+      }
+
+      paper-button:active,
+      paper-button:focus {
+        background-color: var(--lrndesign-stepper-btn-active);
+      }
+
+      paper-button:active:after,
+      paper-button:focus:after {
+        border-color: #abacae;
+        /*border-top-color: #abacae;
+        border-bottom-color: #abacae;*/
+      }
+
+      paper-button {
+        --paper-button: {
+          border-radius: 0;
+          padding: 0;
+        }
+      }
+    </style>
+
+    <paper-button class="btn" noink>
+      <div class="box-container">
+        <div class="top-line"></div>
+        <div class="stepper-btn">
+          <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+          <a href="[[url]]" class="url-style"></a>
+        </div>
+        <div class="bottom-line"></div>
+      </div>
+      <div class="title-container">
+        <div class="node-title">[[title]]</div>
+      </div>
+    </paper-button>
+
+
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'lrndesign-stepper-button',
+      properties: {
+
+        /**
+         * The button title.
+         */
+        title: {
+          type: String,
+          reflectToAttribute: true,
+          notify: true,
+        },
+
+        /**
+         * The button icon.
+         */
+        icon: {
+          type: String,
+          reflectToAttribute: true,
+          notify: true,
+        },
+
+        /**
+        * The url for button.
+        */
+        url: {
+          type: String,
+          reflectToAttribute: true,
+          notify: true,
+        },
+        /**
+        * The tab location position (start / end).
+        */
+        location: {
+          type: String,
+          reflectToAttribute: true,
+          notify: true,
+        }
+
+
+
+
+
+      },
+
+    });
+  </script>
+</dom-module>

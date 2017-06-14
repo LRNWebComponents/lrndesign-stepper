@@ -17,12 +17,45 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic lrndesign-stepper demo</h3>
+      <h3>lrndesign-stepper container</h3>
       <demo-snippet>
         <template>
-          <lrndesign-stepper></lrndesign-stepper>
+          <lrndesign-stepper>
+            <lrndesign-stepper-button title="Lesson1 text" icon="book" url="#"></lrndesign-stepper-button>
+            <lrndesign-stepper-button title="Lesson1 video" icon="av:play-circle-filled" url="#"></lrndesign-stepper-button>
+            <lrndesign-stepper-button title="Test yourself quiz" icon="assignment-turned-in" url="#"></lrndesign-stepper-button>
+            <lrndesign-stepper-button title="Discuss" icon="social:people" url="#"></lrndesign-stepper-button>
+          </lrndesign-stepper>
         </template>
       </demo-snippet>
     </div>
+
+    <div class="vertical-section-container centered">
+      <h3>Stepper Button - Start</h3>
+      <demo-snippet>
+        <template>
+          <lrndesign-stepper-button title="Your Title Goes Here" icon="av:play-circle-outline" url="#" location="start"></lrndesign-stepper-button>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Stepper Button</h3>
+      <demo-snippet>
+        <template>
+          <lrndesign-stepper-button title="Your Title Goes Here" icon="av:play-circle-outline" url="#"></lrndesign-stepper-button>
+        </template>
+      </demo-snippet>
+    </div>
+    <div class="vertical-section-container centered">
+      <h3>Stepper Button - End</h3>
+      <demo-snippet>
+        <template>
+          <lrndesign-stepper-button title="Your Title Goes Here" icon="av:play-circle-outline" url="#" location="end"></lrndesign-stepper-button>
+        </template>
+      </demo-snippet>
+    </div>
+
+
+
   </body>
 </html>
