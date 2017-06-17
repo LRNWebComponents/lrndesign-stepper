@@ -5,9 +5,6 @@
 <link rel="import" href="../iron-icons/av-icons.html">
 <link rel="import" href="../iron-icons/social-icons.html">
 
-
-
-
 <!--
 `lrndesign-stepper-button`
 visualization of steps
@@ -26,7 +23,7 @@ visualization of steps
         --lrndesign-border-color: #abacae;
       }
 
-      .top-line, 
+      .top-line,
       .bottom-line {
         background-color: transparent;
       }
@@ -35,7 +32,7 @@ visualization of steps
         background-color: var(--lrndesign-icon-button-color);
       }
 
-      :host[location="middle"] .top-line, 
+      :host[location="middle"] .top-line,
       :host[location="middle"] .bottom-line {
         background-color: var(--lrndesign-icon-button-color);
       }
@@ -107,7 +104,7 @@ visualization of steps
         width: 100%;
         position: relative;
       }
-      
+
       paper-button:after {
         content: '';
         display: block;
@@ -124,6 +121,9 @@ visualization of steps
       paper-button:focus {
         background-color: var(--lrndesign-stepper-btn-active);
       }
+      paper-button:focus iron-icon {
+      	color: black;
+      }
 
       paper-button:active:after,
       paper-button:focus:after {
@@ -138,12 +138,12 @@ visualization of steps
       }
     </style>
 
+    <a tabindex="-1" href="[[url]]" class="url-style">
     <paper-button class="btn" noink>
       <div class="box-container">
         <div class="top-line"></div>
         <div class="stepper-btn">
           <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
-          <a href="[[url]]" class="url-style"></a>
         </div>
         <div class="bottom-line"></div>
       </div>
@@ -151,7 +151,8 @@ visualization of steps
         <div class="node-title">[[title]]</div>
       </div>
     </paper-button>
-  
+    </a>
+
   </template>
 
   <script>
