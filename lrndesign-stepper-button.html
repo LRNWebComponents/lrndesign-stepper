@@ -138,21 +138,42 @@ visualization of steps
       }
     </style>
 
-    <a tabindex="-1" href="[[url]]" class="url-style">
-    <paper-button class="btn" noink>
-      <div class="box-container">
-        <div class="top-line"></div>
-        <div class="stepper-btn">
-          <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+    <template is="dom-if" if="{{collapsible}}">
+      <paper-button class="btn" noink on-click="collapseToggle">
+        <div class="box-container">
+          <div class="top-line"></div>
+          <div class="stepper-btn">
+            <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+          </div>
+          <div class="bottom-line"></div>
         </div>
-        <div class="bottom-line"></div>
+        <div class="title-container">
+          <div class="node-title">[[title]]</div>
+        </div>
+      </paper-button>
+      <iron-collapse>
+      <div>
+        <content></content>
       </div>
-      <div class="title-container">
-        <div class="node-title">[[title]]</div>
-      </div>
-    </paper-button>
-    </a>
-
+      </iron-collapse>
+    </template>
+    <template is="dom-if" if="!{{collapsible}}">
+      <a tabindex="-1" href="[[url]]" class="url-style">
+      <paper-button class="btn" noink on-click="collapseToggle">
+        <div class="box-container">
+          <div class="top-line"></div>
+          <div class="stepper-btn">
+            <iron-icon icon="[[icon]]" class="btn-icon"></iron-icon>
+          </div>
+          <div class="bottom-line"></div>
+        </div>
+        <div class="title-container">
+          <div class="node-title">[[title]]</div>
+        </div>
+      </paper-button>
+      </a>
+      <content></content>
+    </template>
   </template>
 
   <script>
@@ -194,8 +215,19 @@ visualization of steps
           type: String,
           reflectToAttribute: true,
           notify: true,
-        }
+        },
+        /**
+        * Allow for collapsible content inside
+        */
+        collapsible: {
+          type: Boolean,
+          reflectToAttribute: true,
+          notify: true,
+        },
       },
+      collapseToggle: function(e) {
+        e.target.parentNode.parentNode.nextElementSibling.toggle();
+      }
     });
   </script>
 </dom-module>
