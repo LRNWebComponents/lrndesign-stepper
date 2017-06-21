@@ -21,8 +21,12 @@
       <demo-snippet>
         <template>
           <lrndesign-stepper>
-            <lrndesign-stepper-button title="Lesson 1: Text" icon="book" url="#"></lrndesign-stepper-button>
-            <lrndesign-stepper-button title="Lesson 1: Video" icon="av:play-circle-filled" url="#"></lrndesign-stepper-button>
+            <lrndesign-stepper-button title="Lesson 1: Read this Text" icon="book" collapsible>
+              A bunch of content that's just been revealed
+            </lrndesign-stepper-button>
+            <lrndesign-stepper-button title="Lesson 1: Watch Videos" icon="av:play-circle-filled" collapsible>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/videoseries?list=PLJQupiji7J5fdTItbAp-op9Gfiwx1LvEE" frameborder="0" allowfullscreen></iframe>
+            </lrndesign-stepper-button>
             <lrndesign-stepper-button title="Lesson 1: Quiz" icon="assignment-turned-in" url="#"></lrndesign-stepper-button>
             <lrndesign-stepper-button title="Lesson 1: Discuss" icon="social:people" url="#"></lrndesign-stepper-button>
           </lrndesign-stepper>
