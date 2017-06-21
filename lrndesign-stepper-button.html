@@ -122,7 +122,7 @@ visualization of steps
         background-color: var(--lrndesign-stepper-btn-active);
       }
       paper-button:focus iron-icon {
-      	color: black;
+        color: black;
       }
 
       paper-button:active:after,
@@ -138,7 +138,7 @@ visualization of steps
       }
     </style>
 
-    <template is="dom-if" if="{{collapsible}}">
+    <template is="dom-if" if="{{hasCollapse(collapsible, 1)}}">
       <paper-button class="btn" noink on-click="collapseToggle">
         <div class="box-container">
           <div class="top-line"></div>
@@ -157,9 +157,9 @@ visualization of steps
       </div>
       </iron-collapse>
     </template>
-    <template is="dom-if" if="!{{collapsible}}">
+    <template is="dom-if" if="{{hasCollapse(collapsible, 0)}}">
       <a tabindex="-1" href="[[url]]" class="url-style">
-      <paper-button class="btn" noink on-click="collapseToggle">
+      <paper-button class="btn" noink>
         <div class="box-container">
           <div class="top-line"></div>
           <div class="stepper-btn">
@@ -217,16 +217,31 @@ visualization of steps
           notify: true,
         },
         /**
-        * Allow for collapsible content inside
+        * Allow for collapsible content with the items inside
         */
         collapsible: {
           type: Boolean,
           reflectToAttribute: true,
           notify: true,
+          value: false,
         },
       },
+      /**
+       * Toggling collapse on an iron element.
+       */
       collapseToggle: function(e) {
-        e.target.parentNode.parentNode.nextElementSibling.toggle();
+        e.target.nextElementSibling.toggle();
+      },
+      /**
+       * If it is in a collapsed state or not.
+       */
+      hasCollapse: function(bool, test) {
+        if (bool == test) {
+          return true;
+        }
+        else {
+          return false;
+        }
       }
     });
   </script>
